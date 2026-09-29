@@ -25,7 +25,7 @@ var apis = [
         defaultBranch: "prod",
     },
     {
-        name: 'Server',
+        name: 'Credential Server',
         urlTemplate: 'https://raw.githubusercontent.com/tapis-project/tms_server/refs/heads/main/deployment/tms_server_openapi.yml',
         defaultBranch: "prod",
     },

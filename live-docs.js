@@ -26,7 +26,7 @@ var apis = [
     },
     {
         name: 'Credential Server',
-        urlTemplate: 'https://raw.githubusercontent.com/tapis-project/tms_server/refs/heads/main/deployment/tms_server_openapi.yml',
+        urlTemplate: 'https://raw.githubusercontent.com/tms-trust-project/openapi-tms-server/refs/heads/main/tms_server_openapi.yml',
         defaultBranch: "prod",
     },
 ].map((api) => new Api(api.name, api.urlTemplate, api.defaultBranch));

@@ -29,6 +29,11 @@ var apis = [
         urlTemplate: 'https://raw.githubusercontent.com/tms-trust-project/openapi-tms-server/refs/heads/main/tms_server_openapi.yml',
         defaultBranch: "prod",
     },
+    {
+        name: 'Resource Provider',
+        urlTemplate: 'https://raw.githubusercontent.com/tms-trust-project/tms_provider/refs/heads/main/openapi.yaml',
+        defaultBranch: "main",
+    },
 ].map((api) => new Api(api.name, api.urlTemplate, api.defaultBranch));
 
 

@@ -23,7 +23,7 @@ class Api {
 var apis = [
     {
         name: 'Portal',
-        urlTemplate: 'https://raw.githubusercontent.com/tapis-project/tms_portal/refs/heads/master/docs/tms_openapi.yml',
+        urlTemplate: 'https://raw.githubusercontent.com/tms-trust-project/tms_portal/refs/heads/master/docs/tms_openapi.yml',
         defaultBranch: "prod",
     },
     {

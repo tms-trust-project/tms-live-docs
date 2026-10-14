@@ -1,5 +1,7 @@
 // $(document).foundation();
 
+import { init } from 'https://cdn.redoc.ly/redoc/v3.x/bundles/redoc.standalone.js';
+
 const BRANCH_TEMPLATE_STR = "{{ branch }}"
 
 let urlParams = new URLSearchParams(location.search);
@@ -37,13 +39,13 @@ var apis = [
 ].map((api) => new Api(api.name, api.urlTemplate, api.defaultBranch));
 
 
-function init() {
+function liveDocsInit() {
     let service = urlParams.get("service");
     if (!!service) {
         apis.forEach((api) => {
             if (api.name.toLowerCase() == service.toLowerCase()) {
                 console.log(`${api.getUrlForCurrentBranch()}`)
-                Redoc.init(api.getUrlForCurrentBranch());
+                init(api.getUrlForCurrentBranch());
             }
         });
 
@@ -51,14 +53,14 @@ function init() {
     }
 
     // initially render first API
-    Redoc.init(apis[0].getUrlForCurrentBranch());
+    init(apis[0].getUrlForCurrentBranch());
 }
 
 $(document).ready(function ($) {
     function onClick() {
         var url = this.getAttribute('data-link');
         let serviceName = this.getAttribute('service');
-        Redoc.init(url);
+        init(url);
         var queryParams = new URLSearchParams(window.location.search);
         queryParams.set("service", serviceName);
         let hashFragment = window.location.hash;
@@ -90,7 +92,7 @@ $(document).ready(function ($) {
 
     var queryParams = new URLSearchParams(window.location.search);
     
-    init(queryParams);
+    liveDocsInit(queryParams);
     
     $(window).on('popstate', function () {
         // Get parameters before the popstate event
@@ -106,7 +108,7 @@ $(document).ready(function ($) {
 
         if (beforeService !== afterService || beforeHash !== afterHash) {
             // This history logic helps a bit, but not great.
-            Redoc.init(afterService + afterHash); // Initialize with the new query parameters and hash
+            init(afterService + afterHash); // Initialize with the new query parameters and hash
         }
     });
 })
